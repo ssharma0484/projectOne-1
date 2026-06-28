@@ -36,7 +36,7 @@ stages:
           - script: |
               echo "Deploying Website"
 
-              sudo cp $(Build.SourcesDirectory)/projectOne/index.html /var/www/html/index.html
+              sudo cp $(Build.SourcesDirectory)/projectOne-1/index.html /var/www/html/index.html
 
             displayName: "Copy Website"
 
