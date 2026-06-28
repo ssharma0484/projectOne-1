@@ -1,5 +1,5 @@
 trigger:
-- main 1
+- main
 
 pool:
   name: agentpool
