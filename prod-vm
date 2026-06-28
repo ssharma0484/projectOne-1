@@ -1,0 +1,46 @@
+trigger:
+- main
+
+pool:
+  name: agentpool
+
+stages:
+
+- stage: Build
+  jobs:
+
+  - job: BuildJob
+    steps:
+
+    - script: |
+        echo "Build Stage Running"
+        hostname
+        pwd
+      displayName: "Build Info"
+
+- stage: Deploy
+  dependsOn: Build
+
+  jobs:
+
+  - deployment: DeployWebsite
+
+    environment: production-vm
+
+    strategy:
+      runOnce:
+        deploy:
+
+          steps:
+
+          - script: |
+              echo "Deploying Website"
+
+              sudo cp $(Build.SourcesDirectory)/projectOne/index.html /var/www/html/index.html
+
+            displayName: "Copy Website"
+
+          - script: |
+              sudo systemctl restart nginx
+
+            displayName: "Restart NGINX"
