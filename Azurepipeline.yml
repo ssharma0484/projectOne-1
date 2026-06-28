@@ -13,7 +13,7 @@ steps:
   displayName: "Check VM"
 
 - script: |
-    sudo cp $(Build.SourcesDirectory)/projectOne/index.html /var/www/html/index.html
+    sudo cp $(Build.SourcesDirectory)/projectOne-1/index.html /var/www/html/index.html
   displayName: "Deploy Website"
 
 - script: |
